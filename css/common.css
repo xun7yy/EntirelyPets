@@ -1,0 +1,93 @@
+@font-face 
+{
+	font-family: 'Avnir Next';
+	src: url("font/AvenirNextLTPro-Regular.otf")format("opentype");
+}
+@font-face 
+{
+	font-family: 'Avnir Next bold';
+	src: url("font/AvenirNextLTPro-Bold.otf")format("opentype");
+}
+@font-face 
+{
+	font-family: 'Avnir Next mid';
+	src: url("font/AvenirNextLTPro-Demi.otf")format("opentype");
+}
+@font-face 
+{
+	font-family: 'Didot';
+	src: url("font/Didot Regular.ttf")format("opentype");
+}
+*
+{
+	margin:0;
+}
+body
+{
+	font-family: 'Avnir Next';
+	line-height: 1.5;
+}
+div::after
+{
+	content: "";
+	clear: both;
+	display: table;
+}
+a
+{
+	text-decoration: none;
+	color: black;
+}
+button
+{
+	outline: none;
+	padding: 12px 25px;
+	border-radius: 5px;
+	font-size: 1rem;
+	border: none;
+	border: none;
+  	text-transform: uppercase;
+  	font-weight: bold;
+  	font-size: 0.9rem;
+}
+.center
+{
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+.flex-parent
+{
+	display: flex;
+  	align-items: center; 
+  	flex-wrap: wrap;
+}
+.flex-child
+{
+	flex-grow: 1;
+}
+.container
+{
+	width: 80%;
+	max-width: 1180px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.textContainer
+{
+	max-width: 760px;
+	/*width: 80%;
+	margin-right: auto;
+	margin-left: auto;*/
+}
+.bold
+{
+	font-family: "Avnir Next bold";
+}
+@media (max-width:500px)
+{
+	.container
+	{
+		width: 90%;
+	}
+}

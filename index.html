@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="js/data.js"></script>
+	<script src="js/main.js"></script>
+</head>
+<body>
+	<header>
+		<img src="media/logo.svg" alt="">
+	</header>
+	<div ng-app="shop" ng-controller="list as vm">
+		<div class="search">
+			<input type="text" ng-model="vm.searchedContent">
+		</div>
+		<div class="categoryContainer">
+			<div class="mainCategory" ng-click="vm.selectType('dog')">
+				Dog
+			</div>
+			<div class="mainCategory" ng-click="vm.selectType('cat')">
+				Cat
+			</div>
+			<div>
+				<div class="categoryMenu">
+					{{vm.selectedCategoryNumber}} categories selected
+				</div>
+				<div class="category">
+					<span ng-repeat="categoryOption in vm.categoryOptions">
+						<input type="checkbox" ng-model="categoryOption.isChecked" ng-change="vm.updateSelectedCategories(categoryOption.isChecked, categoryOption.categoryName)">
+						{{categoryOption.categoryName}}
+					</span>
+				</div>
+			</div>
+			<div>
+				<div class="subcategoryMenu">
+					subcategory
+				</div>
+			</div>
+			
+			<div class="reset" ng-click="vm.reset()">
+				reset
+			</div>
+			<div>
+				<select ng-model="vm.sortType">
+					<option value="">Sort By:</option>
+				    <option value="price">Price low to high</option>
+				    <option value="-price">Price high to low</option>
+				</select>
+			</div>
+		</div>
+		<div ng-repeat="item in vm.items | filter:{name: vm.searchedContent} | filter:{type: vm.productType} | filter: vm.setCategory | orderBy: vm.sortType">
+		    <div class="productImgContainer">
+		    	<img ng-src="{{item.pic}}" alt="">
+		    </div>
+		    <div class="name">
+		    	{{item.name}}
+		    </div>
+		    <div class="price">
+		    	${{item.price}}
+		    </div>
+		    {{item.subcategory}}
+		</div>
+	</div>
+</body>
+</html>
