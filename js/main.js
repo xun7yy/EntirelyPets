@@ -3,12 +3,16 @@ angular.module('shop', []).controller('list', function($scope) {
 	vm.productType;
 	vm.searchedContent;
 	vm.sortType;
-	vm.selectedCategoryNumber = 0;
+	// vm.selectedCategoryNumber = 0;
 	vm.ifChecked = true;
 	vm.categoryArray =[];
     vm.categoryOptions = data.categoryOptions;
     vm.items = data.items;
     vm.selectedCategoryNumber = vm.categoryOptions.length;
+    vm.productNumber = vm.items.length;
+    vm.showSearch = true;
+    // vm.onsearching = false;
+    vm.windowSize = 0;
 
    /**
     * filtering by pet type
@@ -16,6 +20,13 @@ angular.module('shop', []).controller('list', function($scope) {
     */
     vm.selectType = function(type) {
     	vm.productType = type;
+        vm.productNumber = 0;
+        for(var i = 0; i < vm.items.length; i++)
+        {
+            if(vm.items[i].type === type) {
+                vm.productNumber++;
+            }
+        }
     };
 
    /**
@@ -39,9 +50,21 @@ angular.module('shop', []).controller('list', function($scope) {
     	if (isChecked) {
     		vm.selectedCategoryNumber++;
     		vm.categoryArray.push(changedCategory);
+            for(var i = 0; i < vm.items.length; i++)
+            {
+                if(vm.items[i].category === changedCategory) {
+                    vm.productNumber++;
+                }
+            }
     	} else {
     		vm.selectedCategoryNumber--;
     		vm.categoryArray.splice(vm.categoryArray.indexOf(changedCategory), 1);
+            for(var i = 0; i < vm.items.length; i++)
+            {
+                if(vm.items[i].category === changedCategory) {
+                    vm.productNumber--;
+                }
+            }
     	}
     };
 
@@ -60,6 +83,7 @@ angular.module('shop', []).controller('list', function($scope) {
 			option.isChecked = true;
     	}
     	vm.selectedCategoryNumber = vm.categoryOptions.length;
+        vm.productNumber = vm.items.length;
     };
 
    /**

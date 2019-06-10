@@ -1,4 +1,4 @@
-/* Only use a row around columns */
+
 .row::after
 {
 	display: table;
@@ -67,7 +67,7 @@
 
 
 
-@media (max-width:800px) 
+@media (max-width:850px) 
 {
 
 	.col-md-1 

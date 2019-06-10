@@ -1,22 +1,7 @@
 @font-face 
 {
-	font-family: 'Avnir Next';
-	src: url("font/AvenirNextLTPro-Regular.otf")format("opentype");
-}
-@font-face 
-{
-	font-family: 'Avnir Next bold';
-	src: url("font/AvenirNextLTPro-Bold.otf")format("opentype");
-}
-@font-face 
-{
-	font-family: 'Avnir Next mid';
-	src: url("font/AvenirNextLTPro-Demi.otf")format("opentype");
-}
-@font-face 
-{
-	font-family: 'Didot';
-	src: url("font/Didot Regular.ttf")format("opentype");
+	font-family: 'Oswald';
+	src: url("font/Oswald.ttf")format("opentype");
 }
 *
 {
@@ -24,7 +9,7 @@
 }
 body
 {
-	font-family: 'Avnir Next';
+	font-family: 'Arial';
 	line-height: 1.5;
 }
 div::after
@@ -38,7 +23,7 @@ a
 	text-decoration: none;
 	color: black;
 }
-button
+/*button
 {
 	outline: none;
 	padding: 12px 25px;
@@ -49,7 +34,7 @@ button
   	text-transform: uppercase;
   	font-weight: bold;
   	font-size: 0.9rem;
-}
+}*/
 .center
 {
 	display: block;
@@ -76,14 +61,15 @@ button
 .textContainer
 {
 	max-width: 760px;
-	/*width: 80%;
-	margin-right: auto;
-	margin-left: auto;*/
 }
-.bold
+/*input
 {
-	font-family: "Avnir Next bold";
+	outline: none;
 }
+button:focus
+{
+	outline:none;
+}*/
 @media (max-width:500px)
 {
 	.container
