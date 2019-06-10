@@ -6,7 +6,6 @@
 
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="shortcut icon" href="media/favicon.png">
 	<link rel="stylesheet" href="css/common.css">
 	<link rel="stylesheet" href="css/grid.css">
@@ -26,13 +25,13 @@
 				<img src="media/logo.png" alt="" class="logo">
 			</div>
 			<div class="search flex-child flex-parent">
-				<input type="text" ng-model="vm.searchedContent" class="inputBar" placeholder="Search all of Entirely Pets" ng-show="vm.showSearch">
+				<input type="text" ng-model="vm.searchedContent" class="inputBar" placeholder="Search all of Entirely Pets" ng-show="vm.showSearch" id="searchBar">
 				<div class="searchIconContainer flex-parent">
 					<img src="media/search.png" alt="" class="searchIcon">
 				</div>
 			</div>
 			<div class="topIconContainer flex-parent">
-				<img src="media/search_white.png" alt="" class="topIcon search_white">
+				<img src="media/search_white.png" alt="" class="topIcon search_white" ng-click="vm.showSearch()">
 				<img src="media/chat.png" alt="" class="topIcon">
 				<img src="media/cart.png" alt="" class="topIcon">
 			</div>
@@ -44,26 +43,37 @@
 		</div>
 		<div class="container">
 			<div class="filterBar flex-parent">
-				<div class="typeContainer">
-					<button class="type" ng-click="vm.selectType('dog')">
-						Dog
-					</button>
-					<button class="type" ng-click="vm.selectType('cat')">
-						Cat
-					</button>
-				</div>
-				<div class="filterContainer flex-parent">
-					<div class="categoryMenu">
-						{{vm.selectedCategoryNumber}} categories selected &#160;&#160;&#9660;
-						<div class="categoryDropDown flex-parent">
-							<div>
-								<div ng-repeat="categoryOption in vm.categoryOptions" class="center categoryCheckbox">
-									<input type="checkbox" ng-model="categoryOption.isChecked" ng-change="vm.updateSelectedCategories(categoryOption.isChecked, categoryOption.categoryName)">
-									{{categoryOption.categoryName}}
+				<div class="filter_small_screen flex-parent col-mid-6">
+					<div class="filterTag_small_screen col-mid-6">
+						Filter &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+						<span class="down">&#9660;</span>
+					</div>
+					<div class="typeContainer">
+						<button class="type" ng-click="vm.selectType('dog')">
+							Dog
+						</button>
+						<button class="type" ng-click="vm.selectType('cat')">
+							Cat
+						</button>
+					</div>
+					<div class="filterContainer">
+						<div class="categoryMenu">
+							{{vm.selectedCategoryNumber}} categories selected &#160;&#160;&#9660;
+							<div class="categoryDropDown flex-parent">
+								<div>
+									<div ng-repeat="categoryOption in vm.categoryOptions" class="center categoryCheckbox">
+										<input type="checkbox" ng-model="categoryOption.isChecked" ng-change="vm.updateSelectedCategories(categoryOption.isChecked, categoryOption.categoryName)">
+										{{categoryOption.categoryName}}
+									</div>
 								</div>
+								<button ng-click="vm.reset()" class="reset reset_smallscreen">
+									Reset
+								</button>
 							</div>
 						</div>
-					</div>
+					</div>					
+				</div>
+				<div class="sort_small_screen flex-parent col-mid-6">
 					<div class="sortContainer">
 						<select ng-model="vm.sortType" class="form-control">
 							<option value="">Sort By:</option>
@@ -81,8 +91,11 @@
 					{{vm.productNumber}} Products
 				</div>
 			</div>
+			<div class="totalProduct_smallscreen">
+				{{vm.productNumber}} Products
+			</div>
 			<div class="productList">
-				<div ng-repeat="item in vm.items | filter:{name: vm.searchedContent} | filter:{type: vm.productType} | filter: vm.setCategory | orderBy: vm.sortType" class="col-lg-3 col-md-6 col-sm-12 productContainer">
+				<div ng-repeat="item in vm.items | filter:{name: vm.searchedContent} | filter:{type: vm.productType} | filter: vm.setCategory | orderBy: vm.sortType" class="col-lag-3 col-lmd-4 col-mid-6 col-sam-12 productContainer">
 					<div class="productInnerContainer">
 						<div class="productImgContainer">
 					    	<img ng-src="{{item.pic}}" alt="" class="productPic">

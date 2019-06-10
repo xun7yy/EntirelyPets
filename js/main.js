@@ -97,4 +97,8 @@ angular.module('shop', []).controller('list', function($scope) {
     };
 
     vm.init();
+
+    vm.showSearch = function() {
+        document.querySelector("#searchBar").classList.toggle("showClass");
+    }
 });
